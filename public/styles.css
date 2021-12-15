@@ -235,7 +235,7 @@ button:hover {
     /* 'official' transaction includes hashes and a 'formal' style */
 .officialTransaction {
   border: 1px solid black;
-  font-size: .9em;
+  font-size: .8em;
   font-family: 'Roboto Mono', sans-serif
 }
 
@@ -264,5 +264,23 @@ button:hover {
   border: none;
   background-color: var(--secondary-bg-color);
   color: white;
+}
+
+#resetHasherButton {
+  background-color: var(--secondary-attn-color);
+  color: white;
+  margin-top: 1em;
+}
+
+#resetHasherButton:hover {
+  background-color: white;
+  color: var(--secondary-attn-color);
+  border: 3px solid var(--secondary-attn-color);
+}
+
+#transactionButton {
+  color: black;
+  border: 2px solid #c3423F;
+  background-color: white;
 }
 

@@ -3,6 +3,7 @@ const Transaction = ({
   sender,
   recipient,
   hash,
+  prevHash,
   amount,
   className,
   denom,
@@ -14,7 +15,7 @@ const Transaction = ({
           backgroundColor: "#f4e3b2",
         }}
       >
-        <b>Transaction {hash ? hash : '[not hashed]'}</b>
+        <b>Transaction {hash ? hash : '[not yet verified]'}</b>
       </div>
       <div
         style={{
@@ -22,6 +23,7 @@ const Transaction = ({
           backgroundColor: '#028090'
         }}  
       >
+        <div>Previous Hash: {prevHash}</div>
         <div>Sender: {sender}</div>
         <div>Recipient: {recipient}</div>
         <div>
