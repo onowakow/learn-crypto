@@ -1,0 +1,215 @@
+/*
+  #EDC7B7 -BEIGE
+  #EEE2DC -LIGHT GREY
+  #BAB2B5 -DARKER GREY
+  #123C69 -BLUE
+  #AC3B61 -PINK
+*/
+
+/*
+  #F8E9A1 - YELLOW
+  #F76C6C - RED
+  #A8D0E6 - LIGHT BLUE
+  #374785 - MED BLUE
+  #24305E - DARK BLUE
+*/
+
+/*
+  #050517 -- dark
+  #c3423F -- red
+  #f4e3b2 -- beige
+  #d3d5d7 -- grey -- f7fbff
+  #028090 -- blue
+*/
+
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.25em;
+  margin: 0;
+  min-height: 100vh;
+}
+
+/*font-family: 'Open sans', sans-serif;*/
+
+#root {
+  --main-bg-color: #f7fbff;
+  --secondary-bg-color: #050517;
+  --tertiary-bg-color: #f4e3b2;
+  --tertiary-darker-bg-color: #d3d5d7;
+  --main-attn-color: #028090;
+  --secondary-attn-color: #c3423F;
+  height: 100vh;
+  background-color: var(--main-bg-color) ;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
+}
+
+#title {
+  color: var(--secondary-bg-color) ;
+  padding: 5px;
+}
+
+h2 {
+  font-size: 1.4em;
+}
+
+#navbar {
+  font-family: 'Roboto Mono', sans-serif;
+  background-color: var(--tertiary-bg-color);
+  font-weight: 300;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding-left: 1em;
+  padding-right: 1em;
+  border: 1px solid var(--tertiary-darker-bg-color)
+}
+
+#icon {
+  background-color: var(--main-attn-color);
+  color: var(--main-bg-color);
+  margin-left: 1em;
+  border-radius: 2px;
+}
+
+#iconTwo {
+  background-color: var(--secondary-attn-color);
+  margin-left: 1em;
+  border-radius: 2px;
+  color: var(--main-bg-color);
+}
+
+#menu {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Width between demonstration and interpretation is relative
+  because it is in flexbox */
+
+button {
+  font-size: 1em;
+  height: 40px;
+  border: none;
+  border-radius: 25px;
+  width: 125px;
+}
+
+button:hover {
+  border: 3px solid black
+}
+
+.btn-span {
+  background-color: var(--main-attn-color);
+  color: var(--main-bg-color);
+  width: 50%;
+  border-radius: 2px;
+}
+
+.btn-primary {
+  background-color: var(--main-attn-color);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-attn-color);
+}
+
+.demonstration {
+  color: var(--secondary-bg-color);
+  padding: .9em;
+}
+
+
+.interpretation {
+  color: var(--tertiary-bg-color);
+  background-color: var(--secondary-bg-color);
+  padding: .9em;
+}
+
+
+.ledgerDemoTransaction {
+  font-family: 'Roboto Mono', sans-serif;
+  padding: .75em;
+  display: flex;
+  border: 2px solid var(--main-attn-color);
+  border-radius: 4px;
+  flex-direction: column;
+  width: 90%;
+  background-color: white;
+}
+
+/* Individual pages below */
+
+/* HOME PAGE */
+
+#homePage {
+}
+
+#homeInterpretation {
+}
+
+#homeDemonstration {
+}
+
+
+/* LEDGER PAGE */
+#ledgerPage {
+  flex-direction: column;
+  display: flex;
+}
+
+#ledgerDemo {
+  display: flex;
+  flex-direction: column;
+}
+
+#ledger {
+  font-size: .8em;
+  width: 40%;
+  margin-left: 10px;
+}
+
+#ledgerExplanation {
+  width: 60%
+}
+
+#ledgerFlexbox {
+  display: flex;
+  flex-direction: row;
+}
+
+/* LEDGER PROBLEM PAGE */
+
+#ledgerProblemPage {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+#ledgerProblemDemonstration {
+  width: 100%;
+}
+
+#ledgerProblemInterpretation {
+  width: 100%;
+
+}
+
+
