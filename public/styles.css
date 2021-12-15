@@ -25,7 +25,6 @@
 
 body {
   font-family: 'Lato', sans-serif;
-  font-size: 1.25em;
   margin: 0;
   min-height: 100vh;
 }
@@ -39,6 +38,7 @@ body {
   --tertiary-darker-bg-color: #d3d5d7;
   --main-attn-color: #028090;
   --secondary-attn-color: #c3423F;
+  --tertialy-attn-color: #df928e;
   height: 100vh;
   background-color: var(--main-bg-color) ;
   display: flex;
@@ -119,7 +119,7 @@ button:hover {
 .btn-span {
   background-color: var(--main-attn-color);
   color: var(--main-bg-color);
-  width: 50%;
+  width: 100%;
   border-radius: 2px;
 }
 
@@ -199,8 +199,7 @@ button:hover {
 
 #ledgerProblemPage {
   display: flex;
-  flex-direction: row;
-  height: 100%;
+  flex-direction: column;
 }
 
 #ledgerProblemDemonstration {
@@ -212,4 +211,58 @@ button:hover {
 
 }
 
+/* HASHER PAGE */
+
+.hasherTable, td, th {
+  background-color: white;
+  font-size: .8em;
+  border: 1px solid;
+  border-collapse: collapse;
+}
+
+.hasherOutput {
+  padding: .7em;
+  height: 300px;
+  font-size: .75em;
+  width: 80%;
+  background-color: white;
+  border: 1px solid;
+  overflow: hidden;
+}
+
+/* LEDGER HASH PAGE */
+
+    /* 'official' transaction includes hashes and a 'formal' style */
+.officialTransaction {
+  border: 1px solid black;
+  font-size: .9em;
+  font-family: 'Roboto Mono', sans-serif
+}
+
+.ledgerHashItem {
+  margin-bottom: 1em;
+}
+
+.hasherInput {
+  height: 7em;
+  border: none;
+}
+
+.hasherForm {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+}
+
+.hasherButton {
+  margin: 0;
+  width: 100%;
+  border-radius: 0px;
+}
+
+.hasherButton:hover {
+  border: none;
+  background-color: var(--secondary-bg-color);
+  color: white;
+}
 

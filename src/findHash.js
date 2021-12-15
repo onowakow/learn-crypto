@@ -1,13 +1,8 @@
-const args = process.argv.slice(2)
-
-if (args.length < 1 || args.length > 1) {
-  console.log("Use: node findHash <data to hash>")
-  process.exit(1)
-}
-const sha256 = require('crypto-js/sha256')
+// const sha256 = require('crypto-js/sha256')
 
 // hashes data into sha256 hex. 64 characters.
 const hashData = (data) => {
+  const sha256 = require('crypto-js/sha256')
   return sha256(data).toString()
 }
 
@@ -37,9 +32,4 @@ const findLowHash = (prevHash, desiredLength, nonce) => {
   
 }
 
-
-console.log(findLowHash(
-  "cd6357efdd966de8c0cb2f876cc89ec74ce35f0968e11743987084bd42fb8944",
-  63,
-  0  
-))
+export default hashData

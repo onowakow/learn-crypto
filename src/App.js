@@ -3,7 +3,8 @@ import HomePage from './pages/HomePage'
 import LedgerPage from './pages/LedgerPage'
 import WorkPage from './pages/WorkPage'
 import ConceptPage from "./pages/ConceptPage";
-import LedgerProblemPage from "./pages/LedgerProblemPage"
+import SimpleHashPage from "./pages/SimpleHashPage"
+import LedgerHashPage from "./pages/LedgerHashPage";
 
 /*const Navbar = () => {
   return (
@@ -100,15 +101,23 @@ const App = () => {
         <Route exact path='/concept'>
           <ConceptPage />
         </Route>
+
         <Route exact path="/">
           <HomePage />
         </Route>
+
         <Route exact path="/ledgers">
           <LedgerPage />
         </Route>
-        <Route exact path='/problemswithledgers'>
-          <LedgerProblemPage />
+
+        <Route exact path='/simplehash'>
+          <SimpleHashPage />
         </Route>
+
+        <Route exact path='/ledgerhash'>
+          <LedgerHashPage />
+        </Route>
+
         <Route exact path='/proofofwork'>
           <WorkPage />
         </Route>

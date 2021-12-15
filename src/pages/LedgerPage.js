@@ -118,7 +118,7 @@ const LedgerPage = () => {
             <p>Much of this application will explore how bitcoin makes a world-wide ledger
               possible. 
             </p>
-            <Link to='/problemswithledgers'>
+            <Link to='/simplehash'>
               <button id="ledgerNextPageBtn" className='btn-span'>Onward!</button>
             </Link>
           </div>
