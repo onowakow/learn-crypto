@@ -5,6 +5,7 @@ import WorkPage from './pages/WorkPage'
 import ConceptPage from "./pages/ConceptPage";
 import SimpleHashPage from "./pages/SimpleHashPage"
 import LedgerHashPage from "./pages/LedgerHashPage";
+import BlockchainPage from './pages/BlockchainPage'
 
 /*const Navbar = () => {
   return (
@@ -112,6 +113,10 @@ const App = () => {
 
         <Route exact path='/simplehash'>
           <SimpleHashPage />
+        </Route>
+
+        <Route exact path='blockchain'>
+          <BlockchainPage />
         </Route>
 
         <Route exact path='/ledgerhash'>

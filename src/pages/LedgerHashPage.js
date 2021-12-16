@@ -1,7 +1,6 @@
 import Transaction from "../components/Transaction";
 import HasherComplexInput from "../components/HasherComplexInput";
 import { useState } from "react";
-import hashData from "../findHash";
 
 const getRandID = () => Math.floor(Math.random() * 100000);
 const storedTransactions = [
@@ -45,74 +44,42 @@ const storedTransactions = [
 ];
 
 const LedgerHashPage = () => {
-  // data to hash. Will be given to hasher component.
-  const [toHash, setToHash] = useState(null);
-
+  // string to hash. Will be given to hasher component.
+  const [stringToHash, setStringToHash] = useState(null);
   // index stores index of data stored in state toHash
   const [indexOfToHash, setIndexOfToHash] = useState(null);
 
   const [transactions, setTransactions] = useState(storedTransactions);
 
-  // alert displays on button ('generate hash') if transactions not made in order
-  const [buttonAlert, setButtonAlert] = useState(null);
-
   const resetSim = () => {
     setTransactions(storedTransactions);
-    setToHash(null);
     setIndexOfToHash(null);
-    setButtonAlert(null);
+    setStringToHash(null);
   };
 
   const handleButtonClick = (transaction, i) => {
     setIndexOfToHash(i);
-    setToHash(
-      `${transaction.prevHash}
+    setStringToHash(`${transaction.prevHash}
 ${transaction.date}
 ${transaction.sender}
 ${transaction.recipient}
-${transaction.amount}`
-    );
+${transaction.amount}`);
   };
 
-  console.log(buttonAlert);
-
-  const handleHashData = (event) => {
-    event.preventDefault();
-
-    // hash the data found in toHash state
-    /* hash appears different when using other hasher. There may be issues
-     with formatting. I don't think this will get in the way of this app's
-     educative mission.*/
-    if (toHash === null) {
-      setButtonAlert('no empty inputs')
-      setTimeout(() => {
-        setButtonAlert(null)
-      }, 3000)
-      // Do not do anything of toHash it null.
-      return;
-    }
-
-    if (toHash[0] === "u") {
-      setButtonAlert("undefined hash: previous transaction still unverified");
-      setTimeout(() => {
-        setButtonAlert(null);
-      }, 5000);
-      return;
-    }
-
-    const hashedData = hashData(toHash);
+  const handleHash = (sha) => {
+    // Clear hasher input
+    setStringToHash(null);
 
     // update transactions array
     setTransactions(
       transactions.map((transaction, i) =>
         i === indexOfToHash
-          ? Object.assign({}, transaction, { hash: hashedData })
+          ? Object.assign({}, transaction, { hash: sha })
           : i === indexOfToHash + 1
-          ? Object.assign({}, transaction, { prevHash: hashedData })
+          ? Object.assign({}, transaction, { prevHash: sha })
           : transaction
       )
     );
-    setToHash(null);
   };
 
   return (
@@ -123,11 +90,9 @@ ${transaction.amount}`
       </div>
       <div className="demonstration">
         {transactions.map((transaction, i) => (
-          <div className="ledgerHashItem">
+          <div className="ledgerHashItem" key={transaction.date}>
             <Transaction
               className={transaction.className}
-              /* Date will be unique in this app */
-              key={transaction.date}
               date={transaction.date}
               sender={transaction.sender}
               recipient={transaction.recipient}
@@ -148,10 +113,9 @@ ${transaction.amount}`
           </div>
         ))}
         <HasherComplexInput
-          handleHashData={handleHashData}
-          data={toHash}
+          handleHash={handleHash}
+          data={stringToHash}
           resetSim={resetSim}
-          buttonAlert={buttonAlert}
         />
       </div>
     </div>
