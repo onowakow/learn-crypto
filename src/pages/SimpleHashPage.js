@@ -9,15 +9,15 @@ const SimpleHashPage = () => {
     ['some sample data', '2cf7ebb33521297e4a78c294e6a362a256d915140b7b440b7fcdd7f4abd2087b'],
     ['12/15/21 12:31 PM', '82b08343a9a38c4b99f7d4973be2eef8bb7778fd9231262c75bcae673336a499']
   ])
-  const [inputVal, setInputVal] = useState('')
+  const [inputValue, setInputValue] = useState('')
 
   const handleInputChange = (event) => {
-    setInputVal(event.target.value)
+    setInputValue(event.target.value)
   }
 
   const handleHashSubmit = (event) => {
     event.preventDefault()
-    const inputHashedPair = [inputVal, hashData(inputVal)]
+    const inputHashedPair = [inputValue, hashData(inputValue)]
 
     // copy of state inputHashArr for slicing if over sized.
     let inputHashArrCopy = inputHashArr
@@ -41,7 +41,7 @@ const SimpleHashPage = () => {
         <Hasher 
           handleOnChange={handleInputChange} 
           handleSubmit={handleHashSubmit} 
-          value={inputVal}
+          value={inputValue}
           inputHashArr={inputHashArr}
         />
       </div>
