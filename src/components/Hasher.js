@@ -1,9 +1,9 @@
 const Hasher = ({ handleOnChange, handleSubmit, value, inputHashArr }) => {
   return (
-    <div className="hasher">
-      <form onSubmit={handleSubmit}>
-        <input onChange={handleOnChange} value={value}></input>
-        <button type="submit">hash data</button>
+    <>
+      <form className='hasherForm' onSubmit={handleSubmit}>
+        <textarea className='hasherInput' onChange={handleOnChange} value={value}></textarea>
+        <button className='hasherButton' type="submit">generate hash</button>
       </form>
       <table className="hasherTable">
         <thead>
@@ -16,14 +16,14 @@ const Hasher = ({ handleOnChange, handleSubmit, value, inputHashArr }) => {
           {inputHashArr
             ? inputHashArr.map((arr, i) => (
                 <tr key={i}>
-                  <td>{arr[0]}</td>
-                  <td>{arr[1]}</td>
+                  <td style={{width: '40%'}}>{arr[0]}</td>
+                  <td style={{width: '60%'}}>{arr[1]}</td>
                 </tr>
               ))
             : null}
         </tbody>
       </table>
-    </div>
+    </>
   );
 };
 

@@ -11,21 +11,16 @@ const Transaction = ({
   return (
     <div className={className}>
       <div
-        style={{
-          backgroundColor: "#f4e3b2",
-        }}
+        className='hash'
       >
         <b>Transaction {hash ? hash : '[not yet verified]'}</b>
       </div>
       <div
-        style={{
-          color: 'white',
-          backgroundColor: '#028090'
-        }}  
+        className='data'
       >
         <div>Previous Hash: {prevHash}</div>
-        <div>Sender: {sender}</div>
-        <div>Recipient: {recipient}</div>
+        <div>Sender ID: {sender}</div>
+        <div>Recipient ID: {recipient}</div>
         <div>
           Amount: {amount} {denom}
         </div>

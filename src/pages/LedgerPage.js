@@ -1,30 +1,50 @@
 import Transaction from "../components/Transaction";
 import { Link } from "react-router-dom";
+import { Container, Row, Col } from 'react-bootstrap'
+import Ledger from '../components/Ledger'
 
 const transactions = [
   {
-    className: "ledgerDemoTransaction",
-    date: "12/3/21",
-    sender: "Casey",
-    recipient: "Owen",
-    amount: "10",
-    denom: "friendcoin",
+    className: "officialTransaction",
+    date: new Date(2021, 3, 21, 8, 24, 1).toString(),
+    sender: 164,
+    recipient: 281,
+    amount: "0.00120",
+    denom: "bitcoin",
+    hash: "0000ebb33521297e4a78c294e6a362a256d915140b7b440b7fcdd7f4abd2087b",
+    prevHash:
+      "0000718774c572bd8a25adbeb1bfcd5c0256ae11cecf9f9c3f925d0e52beaf89",
   },
   {
-    className: "ledgerDemoTransaction",
-    date: "12/4/21",
-    sender: "Owen",
-    recipient: "Dax",
-    amount: "15",
-    denom: "friendcoin",
+    hash: '0000240779e10651b8bab9e68e458a45c40c4a21c55fe6cea8c4109d2857e213',
+    className: "officialTransaction",
+    date: new Date(2021, 3, 22, 12, 45, 26).toString(),
+    sender: 281,
+    recipient: 164,
+    amount: "0.15000",
+    denom: "bitcoin",
+    prevHash:
+      "0000ebb33521297e4a78c294e6a362a256d915140b7b440b7fcdd7f4abd2087b",
   },
   {
-    className: "ledgerDemoTransaction",
-    date: "12/4/21",
-    sender: "Dax",
-    recipient: "Casey",
-    amount: "10",
-    denom: "friendcoin",
+    hash: '0000718774c572bd8a25adbeb1bfcd5c0256ae11cecf9f9c3f925d0e52beaf89',
+    className: "officialTransaction",
+    date: new Date(2021, 3, 22, 14, 12, 57).toString(),
+    sender: 592,
+    recipient: 164,
+    amount: "0.00050",
+    denom: "bitcoin",
+    prevHash: '0000240779e10651b8bab9e68e458a45c40c4a21c55fe6cea8c4109d2857e213',
+  },
+  {
+    hash: '0000f5d1915da1fbc132ced081325efcd2e63e4804f96890f42e9739677237a4',
+    className: "officialTransaction",
+    date: new Date(2021, 3, 24, 2, 34, 15).toString(),
+    sender: 592,
+    recipient: 734,
+    amount: "0.00050",
+    denom: "bitcoin",
+    prevHash: '0000718774c572bd8a25adbeb1bfcd5c0256ae11cecf9f9c3f925d0e52beaf89'
   },
 ];
 /* further explanation on currency.
@@ -38,93 +58,19 @@ const transactions = [
 
 const LedgerPage = () => {
   return (
-    <div id="ledgerPage" className="page">
-      <div id="ledgerInterpretation" className="interpretation">
-        <h2>Ledgers</h2>
-        <p>
-          Remember that bitcoin is a ledger at its simplest. Ledgers track
-          transactions between people over time. Instead of exchanging currency
-          for each trade, people can record their transactions in a{" "}
-          <em>ledger</em>.
-        </p>
-        <p>
-          Ledgers, like currency, track value exchange. They are also similar to
-          currency in that the units of trade (dollars, precious metals, rare
-          nuts) are arbitrary to the system, so long as the users of the ledger
-          trust that the ledger itself is not being fradulently modified.
-        </p>
-        <p>
-          Below is an example of a ledger, made between the three neighbors.
-        </p>
-      </div>
-      <div id="ledgerDemonstration" className="demonstration">
-        <p>
-          Casey, Dax, and Owen decide to call the currency of their ledger
-          <em> friendcoin</em>. The three initialize the currency by
-          distributing 150 coins between themselves.
-        </p>
-        <p>
-          The coin has value because the three have designated it the currency
-          of neighborly trade, they all have things to trade, and they all trust
-          the shared ledger. (Currency creation is usually more complex at
-          larger scales. There are plenty of resources online if this subject
-          interests you.)
-        </p>
-        <div id="ledgerFlexbox">
-          <div id="ledger">
-            <div
-              style={{ 
-                border: "2px solid #24305E",              
-              }}
-              className="ledgerDemoTransaction"
-            >
-              <div>
-                <b>Initial balance</b>
-              </div>
-              <div>Casey: 50 friendcoin</div>
-              <div>Owen: 50 friendcoin</div>
-              <div>Dax: 50 friendcoin</div>
-            </div>
+    <Container className='page'>
+      <Row className='justify-content-center'>
+        <Col className='interpretation' lg='9'>
+          Beep boop
+        </Col>
+      </Row>
+      <Row className='justify-content-center'>
+        <Col className='demonstration' lg='9'>
+          <Ledger transactions={transactions} />
+        </Col>
+      </Row>
 
-            {transactions.map((transaction, i) => {
-              return (
-                <Transaction
-                  className={transaction.className}
-                  date={transaction.date}
-                  sender={transaction.sender}
-                  recipient={transaction.recipient}
-                  amount={transaction.amount}
-                  denom={transaction.denom}
-                  id={i}
-                  key={i}
-                />
-              );
-            })}
-          </div>
-          <div id="ledgerExplanation" className="demonstration">
-            <p style={{ marginTop: 0 }}>
-              This ledger works fine on a small, neighborly scale. Casey, Dax,
-              and Owen may use the ledger primarily to see that their exchanges
-              are roughly equivalent. Fraud would be unlikely given the
-              neighbor's friendship. At larger scales, such a trust system
-              quickly falters.
-            </p>
-            <p>
-              <b>Bitcoin is a single shared ledger. </b> Bitcoin is used around the world
-              by millions of strangers, trading under pseudonyms, with each coin 
-              worth upwards of $50k (at the time of writing). Despite this, the ledger is 
-              nearly impossible to defraud due to key design properties.
-            </p>
-            <p>Much of this application will explore how bitcoin makes a world-wide ledger
-              possible. 
-            </p>
-            <Link to='/simplehash'>
-              <button id="ledgerNextPageBtn" className='btn-span'>Onward!</button>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
+    </Container>
   );
 };
 

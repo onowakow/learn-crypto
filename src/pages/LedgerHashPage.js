@@ -1,6 +1,9 @@
-import Transaction from "../components/Transaction";
 import HasherComplexInput from "../components/HasherComplexInput";
 import { useState } from "react";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Ledger from "../components/Ledger";
 
 const getRandID = () => Math.floor(Math.random() * 100000);
 const storedTransactions = [
@@ -83,42 +86,29 @@ ${transaction.amount}`);
   };
 
   return (
-    <div className="page">
-      <div className="interpretation">
-        [ledger hash][this page is one of the more complication ones] [currently
-        allows premature hashing.]
-      </div>
-      <div className="demonstration">
-        {transactions.map((transaction, i) => (
-          <div className="ledgerHashItem" key={transaction.date}>
-            <Transaction
-              className={transaction.className}
-              date={transaction.date}
-              sender={transaction.sender}
-              recipient={transaction.recipient}
-              amount={transaction.amount}
-              denom={transaction.denom}
-              hash={transaction.hash}
-              prevHash={transaction.prevHash}
-            />
-            {transaction.hash ? null : (
-              <button
-                id="transactionButton"
-                className="spanButton"
-                onClick={() => handleButtonClick(transaction, i)}
-              >
-                pass data to hasher below
-              </button>
-            )}
-          </div>
-        ))}
-        <HasherComplexInput
-          handleHash={handleHash}
-          data={stringToHash}
-          resetSim={resetSim}
-        />
-      </div>
-    </div>
+    <Container className="page" fluid="md">
+      <Row className="justify-content-center">
+        <Col className="interpretation" lg="9">
+          [ledger hash][this page is one of the more complication ones]
+          [currently allows premature hashing.]
+        </Col>
+      </Row>
+      <Row className="justify-content-center">
+        <Col className="demonstration">
+          <Ledger
+            handleButtonClick={handleButtonClick}
+            transactions={transactions}
+          />
+        
+
+          <HasherComplexInput
+            handleHash={handleHash}
+            data={stringToHash}
+            resetSim={resetSim}
+          />
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
