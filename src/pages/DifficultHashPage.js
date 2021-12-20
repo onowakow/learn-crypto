@@ -60,7 +60,7 @@ ${0.0012}`;
           Some placeholder text
         </Col>
       </Row>
-      <Row>
+      <Row className='justify-content-center'>
         <Col className="demonstration" lg="9">
           <Ledger transactions={transactions} />
           <HasherComplexInput
