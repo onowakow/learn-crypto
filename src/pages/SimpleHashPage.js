@@ -3,6 +3,7 @@ import { useState } from 'react'
 import hashData from '../findHash'
 import { Container, Row, Col } from 'react-bootstrap'
 import Ledger from '../components/Ledger'
+import HasherTable from '../components/HasherTable'
 
 const SimpleHashPage = () => {
   // Array contains arrays of [input, output]
@@ -16,26 +17,26 @@ const SimpleHashPage = () => {
   /* This section looks a little silly, but it lets me reuse
     components used later in the app
   */
-  const transactions = [
-    {
-    className: "officialTransaction",
-    date: new Date(2021, 3, 21, 8, 24, 1).toString(),
-    sender: 243,
-    recipient: 163,
-    amount: "0.00120",
-    denom: "bitcoin",
-    hash: "hash: undefined",
-    prevHash:
-      "0000718774c572bd8a25adbeb1bfcd5c0256ae11cecf9f9c3f925d0e52beaf89",
-  },]
-
-  const transaction = transactions[0]
-
-  const transactionData = `${transaction.prevHash}
-${transaction.date}
-${transaction.sender}
-${transaction.recipient}
-${transaction.amount}`
+    const transactions = [
+      {
+      className: "officialTransaction",
+      date: new Date(2021, 3, 21, 8, 24, 1).toString(),
+      sender: 243,
+      recipient: 163,
+      amount: "0.00120",
+      denom: "bitcoin",
+      hash: "hash: undefined",
+      prevHash:
+        "0000718774c572bd8a25adbeb1bfcd5c0256ae11cecf9f9c3f925d0e52beaf89",
+    },]
+  
+    const transaction = transactions[0]
+  
+    const transactionData = `${transaction.prevHash}
+  ${transaction.date}
+  ${transaction.sender}
+  ${transaction.recipient}
+  ${transaction.amount}`
 
   
 
@@ -79,7 +80,6 @@ ${transaction.amount}`
     setInputHashArr(inputHashArrCopy.concat([inputHashedPair]))
   }
 
-  console.log(inputHashArr)
   return (
     <>
     <Container className="page" fluid='md'>
@@ -97,6 +97,7 @@ ${transaction.amount}`
           value={inputValue}
           inputHashArr={inputHashArr}
         />
+        <HasherTable inputHashArr={inputHashArr} />
         <Ledger
             transactions={transactions}
           />

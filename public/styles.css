@@ -43,6 +43,16 @@ body {
   min-height: 100vh;
 }
 
+
+table {
+  font-family: 'Roboto mono', monospace;
+  background-color: white;
+  font-size: .9em;
+  border: 1px solid;
+  width: 100%;
+  border-collapse: collapse;
+}
+
 .demonstration {
   color: var(--secondary-bg-color);
 }
@@ -115,14 +125,10 @@ h2 {
 
 button {
   font-size: 1em;
-  height: 40px;
+  min-height: 40px;
   border: none;
   border-radius: 25px;
   width: 125px;
-}
-
-button:hover {
-  border: 3px solid black
 }
 
 .spanButton {
@@ -202,14 +208,10 @@ button:hover {
 
 
 /* HASHER PAGE */
-
-.hasherTable {
-  background-color: white;
-  font-size: .9em;
-  border: 1px solid;
-  width: 100%;
-  border-collapse: collapse;
+.overflow {
+  overflow-x: auto;
 }
+
 
 .hasherOutput {
   padding: .7em;
@@ -265,7 +267,6 @@ button:hover {
 
 .hasherButton {
   width: 100%;
-  border-radius: 0px;
 }
 
 .hasherButton:hover {
@@ -333,3 +334,26 @@ button:hover {
   border-bottom: 4px dashed
 }
 
+/* for difficult hash page */
+#manualNonce {
+  display: flex;
+  justify-content: space-around;
+}
+
+#manualNonceButton {
+  width: 30%;
+  background-color: var(--tertiary-bg-color);
+}
+
+#manualNonceButton:hover {
+  background-color: var(--main-attn-color);
+  color: white;
+}
+#nonceDisplay {
+  height: fill;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+}

@@ -6,6 +6,7 @@ import ConceptPage from "./pages/ConceptPage";
 import SimpleHashPage from "./pages/SimpleHashPage"
 import LedgerHashPage from "./pages/LedgerHashPage";
 import BlockchainPage from './pages/BlockchainPage';
+import DifficultHashPage from "./pages/DifficultHashPage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
@@ -58,6 +59,10 @@ const App = () => {
 
         <Route exact path='/ledgerhash'>
           <LedgerHashPage />
+        </Route>
+
+        <Route exact path='/difficulthash'>
+          <DifficultHashPage />
         </Route>
 
         <Route exact path='/proofofwork'>
