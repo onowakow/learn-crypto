@@ -1,53 +1,63 @@
-import { Link } from "react-router-dom";
+import { Container, Row, Col } from "react-bootstrap";
 
 const HomePage = () => {
   return (
-    <div id='homePage' className="page">
-      <div id='homeInterpretation' className="interpretation">
-        <h2>Welcome to understanding crypto.</h2>
-        <p>
-          This web application is an interactive look into cryptocurrency
-          and how it works. 
-        </p>
-      </div>
-      <div id='homeDemonstration' className="demonstration">
-        <h3>How to use this guide</h3>
-        <p>
-          With bitcoin and other cryptocurrency gaining popularity, I set out to
-          understand how <em>crypto</em> works. In my research, I read about
-          ledgers, blockchain, hashes, cryptography, and crypto mining. This
-          guide seeks to demystify cryptocurrency by breaking it down into
-          bite-sized pieces.
-        </p>
-
-        <p>
-          Each cryptocurrency is built on a slightly different model.{" "}
-          <b>This guide will focus on bitcoin,</b> an increasingly popular
-          currency.
-        </p>
-
-        <p>
-          There are many articles on how cryptocurrency works. This guide is
-          different because allows you to interact with the concepts. When you
-          see a button, click it. Increase values, decrease values, and change
-          inputs. I personally learn best in this type of learning environment.
-        </p>
-
-        <p>
-          One final note: this guide explains the basics of bitcoin, although
-          not to a tee. Many of the more advanced details are not pertinent to
-          understanding the concept.
-        </p>
-
-        <p>
-          <b>Click the button below to get started!</b>
-        </p>
-
-        <Link to="/ledgers">
-          <button className="btn-span">Let's go!</button>
-        </Link>
-      </div>
-    </div>
+    <Container className="page">
+      <Row className="justify-content-center">
+        <Col className="interpretation" lg="9">
+          <h1 style={{ textAlign: "right" }}>
+            Welcome to understanding crypto{" "}
+          </h1>
+          <h3 style={{ textAlign: "right" }}>
+            an interactive guide about bitcoin
+          </h3>
+        </Col>
+      </Row>
+      <Row className="justify-content-center">
+        <Col className="demonstration" lg="9">
+          <h4>Getting started</h4>
+          <p>
+            I will assume you have previously heard of the <em>bitcoin</em>.
+            Bitcoin is a digital currency with no cental authority or mint.
+            While the US Dollar relies on myriad security features and strict
+            penalties for forgery, bitcoin uses cryptography to create
+            difficult-to-solve computer problems, making forgery and fraud a
+            statistical improbability (bordering on an impossibility).
+          </p>
+          <p>
+            This guide will let you interact with the cryptography which keep
+            bitcoin secure. This guide is about understanding and not about
+            being an official reference. Many details have been tweaked, added
+            to, or left out all together for the sake of not over complicating
+            things. I hope that by the end of this experience you walk away
+            with a better understanding, or feel, for how bitcoin works.
+          </p>
+          <h5>Bitcoin comes down to a few simple points:</h5>
+          <p>These points will be expanded on through the guide.</p>
+          <ol>
+            <li>Bitcoin is a digital ledger.</li>
+            <li>
+              The ledger has no central home or official 'bookkeeper' and anyone
+              can add to or edit their copy of the ledger.
+            </li>
+            <li>
+              Transactions on the ledger are linked together using hard-to-solve
+              computer problems.
+            </li>
+            <li>
+              Solving these problems (in a process called 'mining') happens
+              globally (on average) once every ten minutes, and the miner is
+              given bitcoin as a reward. This is the sole origin of new bitcoin.
+            </li>
+            <li>
+              The 'true' bitcoin ledger will be the longest one. Creating a
+              fraudulent bitcoin transaction would require a conspiracy of 51%
+              of the world's mining power. This is highly improbably.
+            </li>
+          </ol>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

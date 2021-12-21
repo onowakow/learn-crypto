@@ -244,6 +244,10 @@ button {
   background-color: #028090;
 }
 
+.dataVerified {
+  background-color: var(--tertialy-attn-color);
+}
+
 
 .ledgerHashItem {
   padding-top: 1em;

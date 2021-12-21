@@ -4,32 +4,38 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Ledger from "../components/Ledger";
+import HasherPropInput from '../components/HasherPropInput'
+import ResetButton from "../components/ResetButton";
+import AutoNonceHashButton from '../components/AutoNonceHashButton'
 
 const getRandID = () => Math.floor(Math.random() * 100000);
 const storedTransactions = [
   {
     className: "officialTransaction",
+    nonce: 143,
     date: new Date(2021, 3, 21, 8, 24, 1).toString(),
     sender: getRandID(),
     recipient: getRandID(),
     amount: "0.00120",
     denom: "bitcoin",
-    hash: "0000ebb33521297e4a78c294e6a362a256d915140b7b440b7fcdd7f4abd2087b",
+    hash: "0082ebb33521297e4a78c294e6a362a256d915140b7b440b7fcdd7f4abd2087b",
     prevHash:
-      "0000718774c572bd8a25adbeb1bfcd5c0256ae11cecf9f9c3f925d0e52beaf89",
+      "00be718774c572bd8a25adbeb1bfcd5c0256ae11cecf9f9c3f925d0e52beaf89",
   },
   {
     className: "officialTransaction",
+    nonce: null,
     date: new Date(2021, 3, 22, 12, 45, 26).toString(),
     sender: getRandID(),
     recipient: getRandID(),
     amount: "0.15000",
     denom: "bitcoin",
     prevHash:
-      "0000ebb33521297e4a78c294e6a362a256d915140b7b440b7fcdd7f4abd2087b",
+      "0082ebb33521297e4a78c294e6a362a256d915140b7b440b7fcdd7f4abd2087b",
   },
   {
     className: "officialTransaction",
+    nonce: null,
     date: new Date(2021, 3, 22, 14, 12, 57).toString(),
     sender: getRandID(),
     recipient: getRandID(),
@@ -38,6 +44,7 @@ const storedTransactions = [
   },
   {
     className: "officialTransaction",
+    nonce: null,
     date: new Date(2021, 3, 24, 2, 34, 15).toString(),
     sender: getRandID(),
     recipient: getRandID(),
@@ -46,15 +53,16 @@ const storedTransactions = [
   },
 ];
 
+
 const LedgerHashPage = () => {
   // string to hash. Will be given to hasher component.
   const [stringToHash, setStringToHash] = useState(null);
   // index stores index of data stored in state toHash
   const [indexOfToHash, setIndexOfToHash] = useState(null);
-
+  
   const [transactions, setTransactions] = useState(storedTransactions);
-
-  const resetSim = () => {
+  
+  const handleReset = () => {
     setTransactions(storedTransactions);
     setIndexOfToHash(null);
     setStringToHash(null);
@@ -69,7 +77,7 @@ ${transaction.recipient}
 ${transaction.amount}`);
   };
 
-  const handleHash = (sha) => {
+  const handleHashObject = (hashObject) => {
     // Clear hasher input
     setStringToHash(null);
 
@@ -77,9 +85,9 @@ ${transaction.amount}`);
     setTransactions(
       transactions.map((transaction, i) =>
         i === indexOfToHash
-          ? Object.assign({}, transaction, { hash: sha })
+          ? Object.assign({}, transaction, { hash: hashObject.hash, nonce: hashObject.nonce })
           : i === indexOfToHash + 1
-          ? Object.assign({}, transaction, { prevHash: sha })
+          ? Object.assign({}, transaction, { prevHash: hashObject.hash })
           : transaction
       )
     );
@@ -94,18 +102,14 @@ ${transaction.amount}`);
         </Col>
       </Row>
       <Row className="justify-content-center">
-        <Col className="demonstration">
+        <Col className="demonstration" lg='9'>
           <Ledger
             handleButtonClick={handleButtonClick}
             transactions={transactions}
           />
-        
-
-          <HasherComplexInput
-            handleHash={handleHash}
-            data={stringToHash}
-            resetSim={resetSim}
-          />
+          <HasherPropInput data={stringToHash}/>
+          <AutoNonceHashButton difficulty={'2'} data={stringToHash} handleHashObject={handleHashObject} />
+          <ResetButton handleReset={handleReset} />
         </Col>
       </Row>
     </Container>

@@ -14,6 +14,7 @@ const Ledger = ({transactions, handleButtonClick}) => {
           denom={transaction.denom}
           hash={transaction.hash}
           prevHash={transaction.prevHash}
+          nonce={transaction.nonce}
         />
         {transaction.hash ? null : (
           <button

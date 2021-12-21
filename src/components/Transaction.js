@@ -1,3 +1,5 @@
+import TransactionVerified from './TransactionVerified'
+
 const Transaction = ({
   date,
   sender,
@@ -7,6 +9,7 @@ const Transaction = ({
   amount,
   className,
   denom,
+  nonce
 }) => {
   return (
     <div className={className}>
@@ -25,6 +28,9 @@ const Transaction = ({
           Amount: {amount} {denom}
         </div>
         <div>Date: {date}</div>
+        {nonce !== null ? (
+          <TransactionVerified nonce={nonce} />
+        ): null}
       </div>
     </div>
   );
