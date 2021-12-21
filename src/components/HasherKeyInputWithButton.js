@@ -1,4 +1,4 @@
-const Hasher = ({ handleOnChange, handleSubmit, value }) => {
+const HasherKeyInputWithButton = ({ handleOnChange, handleSubmit, value }) => {
   return (
     <>
       <form className='hasherForm' onSubmit={handleSubmit}>
@@ -9,4 +9,4 @@ const Hasher = ({ handleOnChange, handleSubmit, value }) => {
   );
 };
 
-export default Hasher;
+export default HasherKeyInputWithButton;

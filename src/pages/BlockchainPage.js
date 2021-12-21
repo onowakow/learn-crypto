@@ -1,31 +1,72 @@
-import ProtoTransaction from "../components/ProtoTransaction";
-import Spacer from '../components/Spacer'
-const BlockchainPage = () => {
+import { Container, Row, Col } from 'react-bootstrap'
+import { useState } from 'react'
+import HasherPropInput from '../components/HasherPropInput'
+import HasherKeyInputWithButton from '../components/HasherKeyInputWithButton'
+import HasherTable from '../components/HasherTable'
+import HashButton from '../components/HashButton'
+import NonceIncButton from '../components/NonceIncButton'
+
+const ManualInput = ({handleChange}) => {
+
   return (
-    <div class="page">
-      <div class="interpretation">
+    <form className='hasherForm'>
+      <textarea className='hasherInput' onChange={handleChange}></textarea>
+    </form>
+  )
+}
+
+
+const BlockchainPage = () => {
+  const [ tableData, setTableData ] = useState([])
+  const [ nonce, setNonce ] = useState(0)
+  const [ input, setInput ] = useState('')
+
+  const handleChange = (event) => {
+    setInput(event.target.value)
+  }
+
+  console.log(input)
+
+  const incrementNonce = () => {
+    setNonce(nonce + 1)
+  }
+
+  const handleArray = (array) => {
+    setTableData(tableData.concat(array))
+  }
+
+  console.log(nonce)
+
+  const transactionData = `0000718774c572bd8a25adbeb1bfcd5c0256ae11cecf9f9c3f925d0e52beaf89
+  ${new Date(2021, 3, 21, 8, 24, 1).toString()}
+  ${243}
+  ${163}
+  ${0.0012}`
+
+  return (
+    <Container className="page">
+      <Row className='justify-content-center'>
+        <Col className="interpretation" lg='9'>
         [the purpose of this page is to introduce the concept of blockchain]
-      </div>
-      <div class="demonstration">
-        <div id="demoBlockchain">
-          <ProtoTransaction
-            id="protoScheme"
-            prevHash="prev hash"
-            hash="hash"
-            data="data"
-          />
-          {/* Spacer is a simple comp. A dashed line. */}
-          <Spacer />
-          <ProtoTransaction prevHash={3874} hash={8273} data="11/21/21 $2" />
-          <Spacer />
-          <ProtoTransaction prevHash={8271} hash={1982} data="11/22/21 $5" />
-          <Spacer />
-          <ProtoTransaction prevHash={1982} hash={3428} data="11/22/21 $1" />
-          <Spacer />
-          <ProtoTransaction prevHash={3428} hash={9657} data="11/23/21 $3" />
-        </div>
-      </div>
-    </div>
+        </Col>
+      </Row>
+      <Row className='justify-content-center'>
+        <Col className="demonstration" lg='9'>
+          <p>ManualInput</p>
+          <ManualInput handleChange={handleChange} />
+          <p>HasherKeyInputWithButton</p>
+          <HasherKeyInputWithButton />
+          <p>HasherPropInput</p>
+          <HasherPropInput data={transactionData} />
+          <p>HashButton</p>
+          <HashButton handleArray={handleArray} data={transactionData} />
+          <p>NonceIncButton</p>
+          <NonceIncButton nonce={nonce} incrementNonce={incrementNonce} />
+          <p>HasherTable</p>
+          <HasherTable inputHashArray={tableData} />
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

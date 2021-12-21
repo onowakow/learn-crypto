@@ -8,6 +8,8 @@ import LedgerHashPage from "./pages/LedgerHashPage";
 import BlockchainPage from './pages/BlockchainPage';
 import DifficultHashPage from "./pages/DifficultHashPage";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import TransactionHashPage from "./pages/TransactionHashPage";
+import NonceHashPage from "./pages/NonceHashPage";
 
 const App = () => {
   return (
@@ -67,6 +69,14 @@ const App = () => {
 
         <Route exact path='/proofofwork'>
           <WorkPage />
+        </Route>
+
+        <Route exact path='/transactionhash'>
+          <TransactionHashPage />
+        </Route>
+
+        <Route exact path='/noncehash'>
+          <NonceHashPage />
         </Route>
 
       </Switch>

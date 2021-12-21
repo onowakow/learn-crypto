@@ -1,4 +1,4 @@
-const HasherTable = ({ inputHashArr }) => {
+const HasherTable = ({ inputHashArray }) => {
   /* [input, hash] array */
   return (
     <div className='overflow'>
@@ -10,8 +10,8 @@ const HasherTable = ({ inputHashArr }) => {
           </tr>
         </thead>
         <tbody>
-          {inputHashArr
-            ? inputHashArr.map((arr, i) => (
+          {inputHashArray
+            ? inputHashArray.map((arr, i) => (
                 <tr key={i}>
                   <td style={{ width: "40%" }}>{arr[0]}</td>
                   <td style={{ width: "60%" }}>{arr[1]}</td>
