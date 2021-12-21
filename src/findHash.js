@@ -21,21 +21,22 @@ const cryptoFn = {
   },
 
   findLowHash: (data, difficulty, nonce) => {
+    // Initialize final object
+    const returnObj = {}
+
     // stop difficulty over 2.
-    if (difficulty > 2) {
+    if (difficulty > 3) {
       console.log('Difficulty to large for current state of function')
       return
     }
 
     // new hash
     const newHash = cryptoFn.hashData(`${nonce} ${data}`);
-    console.log(newHash)
     const newHashNumber = parseInt(newHash, 16);
     
     if (newHashNumber >= Math.pow(16, 64 - difficulty)) {
-      console.log('true')
-      cryptoFn.findLowHash(data, difficulty, nonce + 1);
-    }
+      return cryptoFn.findLowHash(data, difficulty, nonce + 1);
+    } 
 
     return (
       {

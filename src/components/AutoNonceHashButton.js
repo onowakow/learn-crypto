@@ -13,7 +13,7 @@ const AutoNonceHashButton = ({ data, handleHashObject }) => {
   const handleClick = () => {
     const hashObj = cryptoFn.findLowHash(data, difficulty, 0)
     // pass hash object to parent
-    console.log(hashObj)
+   
     handleHashObject(hashObj)
   }
 
@@ -25,12 +25,15 @@ const AutoNonceHashButton = ({ data, handleHashObject }) => {
         type="range"
         id="difficulty"
         name="difficulty"
-        min="0"
+        min='0'
         max="2"
         value={difficulty}
       />
       <label for="difficulty">adjust difficulty</label>
-      <button onClick={handleClick} className="hasherButton"></button>
+      <button onClick={handleClick} className="hasherButton">
+        find hash with {difficulty === '0' ? 'no' : difficulty}
+        {difficulty !== '1' ? ' leading zeros': ' leading zero'}
+      </button>
     </div>
   );
 };
