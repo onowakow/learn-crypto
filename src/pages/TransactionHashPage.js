@@ -47,6 +47,9 @@ ${transaction.amount}`;
     setInputHashArray([]);
     setInput("");
     setHash("");
+    if (isNonce) {
+      setNonce(0)
+    }
   };
 
   const handleTransactionData = () => {

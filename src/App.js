@@ -9,7 +9,7 @@ import BlockchainPage from './pages/BlockchainPage';
 import DifficultHashPage from "./pages/DifficultHashPage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TransactionHashPage from "./pages/TransactionHashPage";
-import NonceHashPage from "./pages/NonceHashPage";
+import NonceHashPage from "./pages/DifficultHashPage";
 
 const App = () => {
   return (
@@ -39,8 +39,25 @@ const App = () => {
       </nav>
 
       <Switch>
+        {/* Deprecated */}
         <Route exact path='/concept'>
           <ConceptPage />
+        </Route>
+
+
+        {/* Deprecated */}
+        <Route exact path='/blockchain'>
+          <BlockchainPage />
+        </Route>
+
+        {/* Deprecated */}
+        <Route exact path='/difficulthash'>
+          <DifficultHashPage />
+        </Route>
+
+        {/* Deprecated */}
+        <Route exact path='/proofofwork'>
+          <WorkPage />
         </Route>
 
         <Route exact path="/">
@@ -51,32 +68,20 @@ const App = () => {
           <LedgerPage />
         </Route>
 
-        <Route exact path='/simplehash'>
-          <SimpleHashPage />
-        </Route>
-
-        <Route exact path='/blockchain'>
-          <BlockchainPage />
-        </Route>
-
         <Route exact path='/ledgerhash'>
           <LedgerHashPage />
-        </Route>
-
-        <Route exact path='/difficulthash'>
-          <DifficultHashPage />
-        </Route>
-
-        <Route exact path='/proofofwork'>
-          <WorkPage />
         </Route>
 
         <Route exact path='/transactionhash'>
           <TransactionHashPage />
         </Route>
 
-        <Route exact path='/noncehash'>
-          <NonceHashPage />
+        <Route exact path='/difficulthash'>
+          <DifficultHashPage />
+        </Route>
+
+        <Route exact path='/simplehash'>
+          <SimpleHashPage />
         </Route>
 
       </Switch>

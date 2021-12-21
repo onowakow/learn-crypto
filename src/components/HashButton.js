@@ -1,13 +1,13 @@
-import hashData from "../findHash";
+import cryptoFn from "../findHash";
 
 // button does the hashing. takes a string of data.
 // returns to parent an array [ data, hash ]
 
-const HashButton = ({ data, handleArray }) => {
+const HashButton = ({ nonce, data, handleArray }) => {
 
   const handleClick = () => {
     // hash data using SHA-256
-    const hashedData = hashData(data)
+    const hashedData = cryptoFn.hashData(`${nonce} ${data}`)
 
     // if data is empty, let user know
     if (data === '') {

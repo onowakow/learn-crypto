@@ -1,16 +1,12 @@
 // const sha256 = require('crypto-js/sha256')
 
 // hashes data into sha256 hex. 64 characters.
-const hashData = (data) => {
-  const sha256 = require('crypto-js/sha256')
-  return sha256(data).toString()
-}
 
 /* Thinking out loud: hashData returns 64 hex characters. If we need a certain numbers of
-  preceding zeros, it is simple enough to look for a length under 64 characters. 
+preceding zeros, it is simple enough to look for a length under 64 characters. 
 
-  Difficulty is number of preceding zeros. For instance, difficulty of 1 would be 63 
-  characters with a leading zero.  */
+Difficulty is number of preceding zeros. For instance, difficulty of 1 would be 63 
+characters with a leading zero.  */
 
 /*
 const desiredLength = 63
@@ -18,18 +14,39 @@ const prevHash = 'cd6357efdd966de8c0cb2f876cc89ec74ce35f0968e11743987084bd42fb89
 const nonce = 0
 */
 
-const findLowHash = (prevHash, desiredLength, nonce) => {
-  // new hash
-  const newHash = hashData(`${prevHash}${nonce}`)
+const cryptoFn = {
+  hashData: (data) => {
+    const sha256 = require("crypto-js/sha256");
+    return sha256(data).toString();
+  },
 
-  console.log(newHash)
+  findLowHash: (data, difficulty, nonce) => {
+    // stop difficulty over 2.
+    if (difficulty > 2) {
+      console.log('Difficulty to large for current state of function')
+      return
+    }
 
-  // test previous hash with nonce added
-  
-  return newHash[0] === '0' && newHash[1] === '0' && newHash[2] === '0' && newHash[3] === '0'
-    ? [newHash, nonce]
-    : findLowHash(prevHash, desiredLength, nonce + 1)
-  
-}
+    // new hash
+    const newHash = cryptoFn.hashData(`${nonce} ${data}`);
+    console.log(newHash)
+    const newHashNumber = parseInt(newHash, 16);
+    
+    if (newHashNumber >= Math.pow(16, 64 - difficulty)) {
+      console.log('true')
+      cryptoFn.findLowHash(data, difficulty, nonce + 1);
+    }
 
-export default hashData
+    return (
+      {
+        hash: newHash,
+        difficulty: difficulty,
+        nonce: nonce,
+      }
+    ) 
+
+  },
+};
+
+
+export default cryptoFn
