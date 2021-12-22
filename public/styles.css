@@ -92,14 +92,14 @@ h2 {
   border: 1px solid var(--tertiary-darker-bg-color)
 }
 
-#icon {
+.primaryButton {
   background-color: var(--main-attn-color);
   color: var(--main-bg-color);
-  margin-left: 1em;
   border-radius: 2px;
+  width: 40%;
 }
 
-#iconTwo {
+.secondaryButton {
   background-color: var(--secondary-attn-color);
   margin-left: 1em;
   border-radius: 2px;

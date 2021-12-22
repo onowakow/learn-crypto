@@ -1,4 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
@@ -17,20 +18,13 @@ const HomePage = () => {
         <Col className="demonstration" lg="9">
           <h4>Getting started</h4>
           <p>
-            I will assume you have previously heard of the <em>bitcoin</em>.
-            Bitcoin is a digital currency with no cental authority or mint.
-            While the US Dollar relies on myriad security features and strict
-            penalties for forgery, bitcoin uses cryptography to create
-            difficult-to-solve computer problems, making forgery and fraud a
-            statistical improbability (bordering on an impossibility).
-          </p>
-          <p>
-            This guide will let you interact with the cryptography which keep
-            bitcoin secure. This guide is about understanding and not about
-            being an official reference. Many details have been tweaked, added
-            to, or left out all together for the sake of not over complicating
-            things. I hope that by the end of this experience you walk away
-            with a better understanding, or feel, for how bitcoin works.
+            Welcome to understanding crypto, an interactive guide to bitcoin and
+            blockchain technologies. There are many great articles on this topic
+            online, but very few include visual components, and I have yet to
+            see an interactive exploration of the technology. This guide’s
+            purpose is to give the reader a feel for how bitcoin works. It is
+            not meant for reference. This application was created by Owen
+            Nowakowski using the React library.
           </p>
           <h5>Bitcoin comes down to a few simple points:</h5>
           <p>These points will be expanded on through the guide.</p>
@@ -50,11 +44,15 @@ const HomePage = () => {
               given bitcoin as a reward. This is the sole origin of new bitcoin.
             </li>
             <li>
-              The 'true' bitcoin ledger will be the longest one. Creating a
+              The 'true' bitcoin ledger is the longest one. Creating a
               fraudulent bitcoin transaction would require a conspiracy of 51%
               of the world's mining power. This is highly improbably.
             </li>
           </ol>
+          <p>Let's begin with bitcoin's ledger, built on a technology called <em>blockchain</em>.</p>
+          <Link to="/ledger">
+            <button className="primaryButton">next page</button>
+          </Link>
         </Col>
       </Row>
     </Container>
