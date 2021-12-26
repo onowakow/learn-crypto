@@ -9,7 +9,9 @@ const Transaction = ({
   amount,
   className,
   denom,
-  nonce
+  nonce,
+  award,
+  awardRecipient
 }) => {
   return (
     <div className={className}>
@@ -21,7 +23,7 @@ const Transaction = ({
       <div
         className='data'
       >
-        <div>Previous Hash: {prevHash}</div>
+        <div>Previous hash: {prevHash}</div>
         <div><u>Transaction data:</u></div>
         <div>Sender ID: {sender}</div>
         <div>Recipient ID: {recipient}</div>
@@ -30,7 +32,11 @@ const Transaction = ({
         </div>
         <div>Date: {date}</div>
         {nonce !== null ? (
+          <>
           <TransactionVerified nonce={nonce} />
+          <div>Mining reward: {award}</div>
+          <div>Reward recipient: {awardRecipient}</div>
+          </>
         ): null}
       </div>
     </div>

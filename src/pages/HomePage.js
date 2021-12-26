@@ -14,13 +14,13 @@ const HomePage = () => {
       </Row>
       <Row className="justify-content-center">
         <Col className="demonstration" lg="7">
-          <h4>Introduction</h4>
+          <h4 style={{ marginTop: "1em" }}>Introduction</h4>
 
           <p>
             Welcome to understanding crypto! This guide will teach the
             fundamental concepts of how bitcoin and blockchain technologies
             work. This guide is meant to be interactive, so please try the
-            demonstrations after reading each section!
+            demonstrations after reading each section.
           </p>
 
           <h4>What is bitcoin? </h4>
@@ -71,20 +71,22 @@ const HomePage = () => {
 
           <h4>How does mining work?</h4>
 
-          <p>Let's review some components of bitcoin. First, we have <b>transactions</b>, which
-          are records of bitcoins (typically partial bitcoins) being traded. Transactions are
-          grouped into <b>blocks</b>. <b>Miners</b> run random numbers through computers to
-          find the ones which satisfy a mathematical lottery, and upon success, chain the new blocks
-          onto the pre-existing <b>blockchain</b>.
+          <p>
+            Let's review some components of bitcoin. First, we have{" "}
+            <b>transactions</b>, which are records of bitcoins (typically
+            partial bitcoins) being traded. Transactions are grouped into{" "}
+            <b>blocks</b>. <b>Miners</b> run random numbers through computers to
+            find the ones which satisfy a mathematical lottery, and upon
+            success, chain the new blocks onto the pre-existing{" "}
+            <b>blockchain</b>.
           </p>
 
           <p>
             The exact mathematical mechanism that connects one block to the next
-            is what lends bitcoin its security, and will be a major interest of 
-            this guide. Before then, we must get a clearer idea of the blockchain
-            and the role it plays in bitcoin.
+            is what lends bitcoin its security, and will be a major interest of
+            this guide. Before then, we must get a clearer idea of the
+            blockchain and the role it plays in bitcoin.
           </p>
-
         </Col>
         <NextPage pageName="ledger" />
       </Row>

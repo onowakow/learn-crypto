@@ -167,7 +167,11 @@ ${transaction.amount}`;
       </Row>
       <Row className="justify-content-center">
         <Col className="demonstration" lg="7">
-          <button style={{marginTop: '1em'}}className="toggleButton" onClick={toggleInputType}>
+          <button
+            style={{ marginTop: "1em" }}
+            className="toggleButton"
+            onClick={toggleInputType}
+          >
             current input type: {inputType === 0 ? "manual" : "transaction"}
           </button>
           {inputType === 0 ? (
@@ -201,6 +205,27 @@ ${transaction.amount}`;
           <ResetButton handleReset={handleReset} />
         </Col>
       </Row>
+      <Row className="justify-content-center" style={{ marginTop: "1em" }}>
+        <Col className="interpretation" lg="7">
+          <p>
+            Miners are rather aptly named. Miners write programs to search day
+            in and day out for rare and valuable nonce values. While
+            gold miners may have a general idea of where gold can be found based
+            on past experiences, the distribution of winning nonce values is
+            completely random.
+          </p>
+          <p>
+            Why bother with such a chore? Currently, a successful block
+            verification has a reward of 6.25 bitcoins for the single miners who
+            finds the nonce. At the time of typing this, a single bitcoin is
+            worth around $50,000 USD. That means these miners are searching for
+            $300,000 nuggets. As more bitcoins are found, the number of bitcoins
+            rewarded per block is decreased. There is a finite cap on the number
+            of bitcoins that will ever be created.
+          </p>
+        </Col>
+      </Row>
+
       <NextPage pageName="/ledgerhash" />
     </Container>
   );
