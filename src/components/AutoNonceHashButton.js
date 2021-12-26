@@ -13,8 +13,8 @@ const AutoNonceHashButton = ({ difficulty, data, handleHashObject }) => {
   return (
     <div>
       <button onClick={handleClick} className="hasherButton">
-        find hash with {difficulty === "0" ? "no" : difficulty}
-        {difficulty !== "1" ? " leading zeros" : " leading zero"}
+        find hash with {difficulty === 0 ? "no" : difficulty}
+        {difficulty !== 1 ? " leading zeros" : " leading zero"}
       </button>
     </div>
   );

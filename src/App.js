@@ -9,32 +9,17 @@ import BlockchainPage from './pages/BlockchainPage';
 import DifficultHashPage from "./pages/DifficultHashPage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TransactionHashPage from "./pages/TransactionHashPage";
-import NonceHashPage from "./pages/DifficultHashPage";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   return (
+    <>
     <Router>
       <nav id="navbar">
         <h1 id="title">understanding crypto</h1>
-        {/*
-        <Link to='/ledger'>
-          <button id='icon'>ledgers</button>
+        <Link to='/'>
+          <button>Home</button>
         </Link>
-        <Link to='/simplehash'>
-          <button id='icon'>hashes</button>
-        </Link>
-        <Link to='/ledgerhash'>
-          <button id='icon'>ledger with hashes</button>
-        </Link>
-        <Link to='/difficulthash'>
-          <button id='icon'>difficult hashes</button>
-        </Link>
-        <Link to='/noncehash'>
-          <button id='icon'>nonce</button>
-        </Link>
-        */}
-        <div id='icon'>ADD SOME COLOR</div>   
-        <div id='iconTwo'>MORE</div> 
           
       </nav>
 
@@ -86,6 +71,7 @@ const App = () => {
 
       </Switch>
     </Router>
+    </>
   );
 };
 

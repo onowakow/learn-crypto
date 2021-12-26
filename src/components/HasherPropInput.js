@@ -2,7 +2,7 @@ const HasherPropInput = ({ nonce, data }) => {
   return (
     <div className="hasherForm">
       <div className="hasherInput">
-        <b>{nonce} </b>
+        {nonce !== null ? <b>{nonce}{' '}</b> : null}
         {data ? (
           data
         ) : (

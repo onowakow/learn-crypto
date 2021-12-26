@@ -96,13 +96,13 @@ ${transaction.amount}`);
   return (
     <Container className="page" fluid="md">
       <Row className="justify-content-center">
-        <Col className="interpretation" lg="9">
+        <Col className="interpretation" lg="7">
           [ledger hash][this page is one of the more complication ones]
           [currently allows premature hashing.]
         </Col>
       </Row>
       <Row className="justify-content-center">
-        <Col className="demonstration" lg='9'>
+        <Col className="demonstration" lg='7'>
           <Ledger
             handleButtonClick={handleButtonClick}
             transactions={transactions}

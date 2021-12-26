@@ -2,7 +2,7 @@ const HasherTable = ({ inputHashArray }) => {
   /* [input, hash] array */
   return (
     <div className='overflow'>
-      <table className="hasherTable">
+      <table className="table">
         <thead>
           <tr>
             <th>data</th>

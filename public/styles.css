@@ -24,7 +24,6 @@
 
 
 body {
-  font-family: 'Lato', sans-serif;
   margin: 0;
   min-height: 100vh;
 }
@@ -38,7 +37,7 @@ body {
   --tertiary-darker-bg-color: #d3d5d7;
   --main-attn-color: #028090;
   --secondary-attn-color: #c3423F;
-  --tertialy-attn-color: #df928e;
+  --tertiary-attn-color: #df928e;
   background-color: var(--main-bg-color) ;
   min-height: 100vh;
 }
@@ -54,20 +53,21 @@ table {
 }
 
 .demonstration {
+  font-family: 'Lato', sans-serif;
   color: var(--secondary-bg-color);
 }
 
 .interpretation {
-  color: var(--tertiary-bg-color);
-  background-color: var(--secondary-bg-color);
+  font-family: 'Lato', sans-serif;
+  /*color: var(--tertiary-bg-color);*/
+  /*background-color: var(--secondary-bg-color);
+  /*border-radius: 5px;*/
   padding: .9em;
-}
-h1 {
-  margin: 0;
+  border-bottom: 2px solid var(--tertiary-bg-color)
 }
 
-h2 {
-  margin: 0;
+.miscButton:hover {
+  background-color: var(--tertiary-darker-bg-color)
 }
 
 #title {
@@ -96,7 +96,7 @@ h2 {
   background-color: var(--main-attn-color);
   color: var(--main-bg-color);
   border-radius: 2px;
-  width: 40%;
+  width: 50%;
 }
 
 .secondaryButton {
@@ -106,29 +106,12 @@ h2 {
   color: var(--main-bg-color);
 }
 
-#menu {
-  display: grid;
-  height: 100%;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-
 .page {
   display: flex;
   flex-direction: column;
   height: 100%;
   padding-bottom: 4em;
-  padding-top: 2em;
-}
-
-/* Width between demonstration and interpretation is relative
-  because it is in flexbox */
-
-button {
-  font-size: 1em;
-  min-height: 40px;
-  border: none;
-  border-radius: 25px;
-  width: 125px;
+  padding-top: 1em;
 }
 
 .spanButton {
@@ -138,89 +121,9 @@ button {
   border-radius: 2px;
 }
 
-.primaryButton {
-  background-color: var(--main-attn-color);
-}
-
-.secondaryButton {
-  background-color: var(--secondary-attn-color);
-}
-
-
-
-.ledgerDemoTransaction {
-  font-family: 'Roboto Mono', sans-serif;
-  padding: .75em;
-  display: flex;
-  border: 2px solid var(--main-attn-color);
-  border-radius: 4px;
-  flex-direction: column;
-  width: 90%;
-  background-color: white;
-}
-
-/* Individual pages below */
-
-/* HOME PAGE */
-
-#homePage {
-}
-
-#homeInterpretation {
-}
-
-#homeDemonstration {
-}
-
-
-/* LEDGER PAGE */
-#ledgerPage {
-  flex-direction: column;
-  display: flex;
-}
-
-#ledgerDemo {
-  display: flex;
-  flex-direction: column;
-}
-
-#ledger {
-  font-size: .8em;
-  width: 40%;
-  margin-left: 10px;
-}
-
-#ledgerExplanation {
-  width: 60%
-}
-
-#ledgerFlexbox {
-  display: flex;
-  flex-direction: row;
-}
-
-/* LEDGER PROBLEM PAGE */
-
-#ledgerProblemPage {
-  display: flex;
-  flex-direction: column;
-}
-
-
-/* HASHER PAGE */
 .overflow {
   overflow-x: auto;
-}
-
-
-.hasherOutput {
-  padding: .7em;
-  height: 300px;
-  font-size: .75em;
-  width: 80%;
-  background-color: white;
-  border: 1px solid;
-  overflow: hidden;
+  margin-top: 1em;
 }
 
 /* LEDGER HASH PAGE */
@@ -266,11 +169,12 @@ button {
   display: flex;
   flex-direction: column;
   margin-top: 1em;
-  margin-bottom: 1em;
 }
 
 .hasherButton {
   width: 100%;
+  min-height: 40px;
+  border-radius: 2px;
 }
 
 .hasherButton:hover {
@@ -326,18 +230,6 @@ button {
   display: flex;
 }
 
-  /* for an exceedingly simple component called Spacer. */
-.spacer {
-  width: 30px;
-  display: flex;
-  flex-direction: column;
-}
-
-.top {
-  height: 50%;
-  border-bottom: 4px dashed
-}
-
 /* for difficult hash page */
 #manualNonce {
   display: flex;
@@ -365,4 +257,42 @@ button {
 /* TRANSACTION HASH */
 #passDataButton {
   width: 50%;
+}
+
+.difficulty {
+  width: 50%;
+}
+
+.difficultyControls {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonSet {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  color: red;
+  justify-content: space-between;
+  margin-bottom: .3em;
+}
+
+.difficultyButton {
+  font-size: .8em;
+  width: 30%;
+  background-color: var(--tertiary-bg-color);
+}
+
+.difficultyButton:hover {
+  background-color: white;
+}
+
+#selectedButton {
+  background-color: var(--main-attn-color);
+  color: white;
+}
+
+.toggleButton:hover {
+  background-color: var(--tertiary-darker-bg-color);
 }

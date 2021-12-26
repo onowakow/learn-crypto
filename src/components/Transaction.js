@@ -16,12 +16,13 @@ const Transaction = ({
       <div
         className='hash'
       >
-        <b>Transaction {hash ? hash : '[not yet verified]'}</b>
+        <b>Block {hash ? hash : '[not yet verified]'}</b>
       </div>
       <div
         className='data'
       >
         <div>Previous Hash: {prevHash}</div>
+        <div><u>Transaction data:</u></div>
         <div>Sender ID: {sender}</div>
         <div>Recipient ID: {recipient}</div>
         <div>
