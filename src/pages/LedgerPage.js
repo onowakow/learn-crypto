@@ -66,10 +66,11 @@ const LedgerPage = () => {
       <Row className="justify-content-center">
         <Col className="interpretation" lg="7">
           <h3>The blockchain</h3>
-          <p>Pictured below is how we will imagine the blockchain. Older transactions
-            are on top and newer transactions are below.
+          <p>
+            Pictured below is how we will imagine the blockchain. We will
+            explore the individual parts below. (Note: older transactions are on
+            top and newer transactions are below.)
           </p>
-          <div className='hash'>0000240779e10651b8bab9e68e458a45c40c4a21c55fe6cea8c4109d2857e213</div>
           {/*
           <p>
             All bitcoins are created on the blockchain, and the blockchain
@@ -185,9 +186,63 @@ const LedgerPage = () => {
         <Col className="demonstration" lg="7">
           <Ledger transactions={transactions} />
         </Col>
-        <p></p>
-        <NextPage pageName="/simplehash" />
       </Row>
+      <Row style={{ marginTop: "1em" }} className="justify-content-center">
+        <Col className="interpretation" lg="7">
+          <p>Let's explore the individual components of a block.</p>
+          <p>
+            The first thing I notice about these blocks are their long
+            identifying codes. These are known as hashes, and they are what
+            miners seek to find. Notice how there is a main hash as well as a
+            recorded 'previous hash.' This is critical to how the blocks are
+            linked together.
+          </p>
+          <div className="hash" style={{ marginBottom: "1em" }}>
+            0000240779e10651b8bab9e68e458a45c40c4a21c55fe6cea8c4109d2857e213
+          </div>
+          <p>
+            A hash like the one pictured above is generated from a{" "}
+            <em>cryptographic hash function</em> (hence <em>crypto</em>
+            currency). Hash functions, in a general sense, map data by a common
+            system. In order to be a proper hashing function, an input must
+            always map to a singular output (although the converse does not need
+            to be true). We will continue looking into hashing on the next page.
+          </p>
+          <p>Next on the blocks, we see some transaction data.</p>
+          <div className="data">
+            <div>Sender ID: 892</div>
+            <div>Recipient ID: 224</div>
+            <div>Amount: 0.00040 bitcoin</div>
+            <div>
+              Date: Thu Apr 22 2021 16:34:21 GMT-0500 (Central Daylight Time)
+            </div>
+          </div>
+          <p style={{ marginTop: "1em" }}>
+            Real bitcoin blocks may contain several hundred transactions each. I
+            will picture them with single transactions to save space and avoid
+            clutter. Transactions include information about who sent money to
+            who, how much was sent, and when the money was sent (no surprises
+            here). Recall that bitcoins are not individually identifiable but
+            rather exist as balances, so a true and complete record of bitcoin
+            transactions is precisely where bitcoins 'live.' Software can look
+            through the blockchain and determine who owns how much bitcoin to
+            ensure no one is trading money they do not have.
+          </p>
+          <p>
+            Combining the transaction data, the hash of the previous block, and
+            a special unknown number, hash functions can generate a hash to link
+            the current block onto the blockchain. The transaction is thereby
+            'set in stone' as it officially marks the movement of value from one
+            account to another.
+          </p>
+          <p>
+            Hashes are the secret glue that holds the blockchain together. By
+            exploring the properties of hash functions and hashes themselves, we
+            can better understand bitcoin.
+          </p>
+        </Col>
+      </Row>
+      <NextPage pageName="/simplehash" />
     </Container>
   );
 };

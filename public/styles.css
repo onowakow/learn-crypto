@@ -63,7 +63,12 @@ table {
   /*background-color: var(--secondary-bg-color);
   /*border-radius: 5px;*/
   padding: .9em;
-  border-bottom: 2px solid var(--tertiary-bg-color)
+  border-bottom: 2px solid var(--tertiary-bg-color);
+  border-top: 2px solid var(--tertiary-bg-color);
+}
+
+a {
+  color: orange;
 }
 
 .miscButton:hover {
@@ -148,7 +153,7 @@ h2 {
 }
 
 .dataVerified {
-  background-color: var(--tertialy-attn-color);
+  background-color: var(--tertiary-attn-color);
 }
 
 

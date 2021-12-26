@@ -15,6 +15,7 @@ const HomePage = () => {
       <Row className="justify-content-center">
         <Col className="demonstration" lg="7">
           <h4>Introduction</h4>
+
           <p>
             Welcome to understanding crypto! This guide will teach the
             fundamental concepts of how bitcoin and blockchain technologies
@@ -23,12 +24,14 @@ const HomePage = () => {
           </p>
 
           <h4>What is bitcoin? </h4>
+
           <p>
             Bitcoin is a digital currency. It can be used like any other
             currency to buy and exchange goods (assuming a vendor accepts it).
             Bitcoins are tracked on a ledger, called the blockchain, where they
             are assigned to people's unique ID's.
           </p>
+
           <p>
             Bitcoins, in some sense, do not exist. They have no physical token,
             no precious metal standard, and they don't even have unique
@@ -45,6 +48,7 @@ const HomePage = () => {
             server where the blockchain officially lives. Instead, people share
             copies of the blockchain, always trusting the longest ledger.
           </p>
+
           <p>
             The verity of the longest ledger is due to a concept called{" "}
             <em>proof-of-work,</em> which says the longest ledger is the true
@@ -55,6 +59,7 @@ const HomePage = () => {
             incredibly unlikely due to the mathematical nature of bitcoin
             verification.
           </p>
+
           <p>
             Transactions are verified in a process called 'mining,' which is
             closely analogous to guessing at lottery numbers. The <em>only</em>{" "}
@@ -63,7 +68,9 @@ const HomePage = () => {
             would be like winning several lotteries in a row despite millions of
             people also playing to win.
           </p>
+
           <h4>How does mining work?</h4>
+
           <p>Let's review some components of bitcoin. First, we have <b>transactions</b>, which
           are records of bitcoins (typically partial bitcoins) being traded. Transactions are
           grouped into <b>blocks</b>. <b>Miners</b> run random numbers through computers to
@@ -74,8 +81,10 @@ const HomePage = () => {
           <p>
             The exact mathematical mechanism that connects one block to the next
             is what lends bitcoin its security, and will be a major interest of 
-            this guide.
+            this guide. Before then, we must get a clearer idea of the blockchain
+            and the role it plays in bitcoin.
           </p>
+
         </Col>
         <NextPage pageName="ledger" />
       </Row>

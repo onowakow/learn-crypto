@@ -6,6 +6,7 @@ import DifficultyHasherTable from "../components/DifficultyHasherTable";
 import ResetButton from "../components/ResetButton";
 import NextPage from "../components/NextPage";
 import HasherPropInput from "../components/HasherPropInput";
+import TransactionVerified from "../components/TransactionVerified";
 
 // two-fold page. Lets user manual nonce increment and auto nonce increment
 const defaultTableData = [
@@ -84,43 +85,91 @@ ${transaction.amount}`;
     <Container className="page">
       <Row className="justify-content-center">
         <Col className="interpretation" lg="7">
-          <h4>Making hashing hard</h4>
+          <h4>Making hashing difficult</h4>
           <p>
-            SHA-256 hashes with <em>special traits</em> link together
-            transactions in the blockchain. Verifying the transactions by
-            finding these special hashes is the work of miners.
+            When a bitcoin transaction is made, it queues up with other pending
+            transactions on an unattached block. All miners are broadcasted
+            special criteria for how the particular block's hash must look, such
+            as it must begin with four leading zeros (as in the example below).
+          </p>
+          <div className="hash" style={{ marginBottom: "1em" }}>
+            0000240779e10651b8bab9e68e458a45c40c4a21c55fe6cea8c4109d2857e213
+          </div>
+          <p>
+            Miners calculate a hash by inputting the block's data, the previous
+            block's hash, and a special number called a <b>nonce</b> (the word
+            comes from cryptography, and its meaning is not particularly helpful
+            to us). While the first two inputs are set values for a given block,
+            the nonce must be varied by the miner to generate varied hashes.
           </p>
           <p>
-            Along with transaction data and the previous hash, a third value
-            called the nonce is input for the hash function. Miners search
-            through possible nonce values to find a hash with the special traits
-            mandated by the blockchain's setup.
+            Miners can use any value they want for the nonce, but for
+            simplicity, we will start with zero and simulate generating a hash.
           </p>
+          <TransactionVerified nonce={0} />
+          <div className="hash" style={{ marginBottom: "1em" }}>
+            2a26c466a3017315beb56e069e776e166f12422372115407608d6364f37a794c
+          </div>
           <p>
-            One such special trait could be a certain number of leading zeros on
-            the hash (like the three leading zeros in '0004e0779ebb...').
-            Because hashes are impossible to predict, miners must guess at the
-            nonce value to find a special hash.
+            Unsurprisingly, a nonce of 0 did not happen to create a hash with
+            four leading zeros. The miner could then add 1 to the nonce.
           </p>
+          <TransactionVerified nonce={1} />
+          <div className="hash" style={{ marginBottom: "1em" }}>
+            a98bf958af15d4936a992cbdf5bb47831c7ba01bfca87c0cca4978705c71c4a3
+          </div>
+          <p>
+            Again, the results are not surprising. The miner must continue to
+            increment the nonce until he or she reaches a satisfactory hash.
+            Because these hashes are shown in base-16, there's about a 1 in 16
+            chance any one digit will be a zero. For each successive 0, these
+            chances become exponentially lower. Two zeros will appear on average
+            about once in 256 (16*16) nonce values, while four consecutive zeros
+            appear only once in 65,530 (16*16*16*16) nonce values. If my
+            computer was powerful enough to find such a value, the hash and
+            nonce may look something like this:
+          </p>
+          <TransactionVerified nonce="108,925" />
+          <div className="hash" style={{ marginBottom: "1em" }}>
+            0000c7541f1c558664174f280bcfe2bc42be1969061f62317e4a1a1bb33fb7b3
+          </div>
+          <p>
+            Even given that high value, this example is nothing compared to the
+            computation required for verifying transactions in actuality.
+            Currently,{" "}
+            <a href="https://www.businessinsider.com/bitcoin-mining-electricity-usage-more-than-google-2021-9">
+              bitcoin mining collectively uses 7 times more energy that all of
+              Google's servers (and about 1/2 of 1% of the world's energy
+              consumption).
+            </a>{" "}
+            For all that energy to be expended on creating these hashes, it's
+            safe to say that they are using exceedingly difficult hash criteria.
+            As computers get faster and more people and companies mine, bitcoin
+            simply makes hashing more difficult and the verification rate
+            remains steady right around once every ten minutes.
+          </p>
+          <p></p>
           <p>
             The demonstration below shows how increasing the number of leading
             zeros makes the nonce increase in size. This program simply starts
             the nonce at zero, checks if the hash fits the criteria, increases
-            the nonce, checks again, and repeats.
+            the nonce, checks again, and repeats. The program can only safely
+            look for up to two leading zeros (without crashing the browser).
+            Luckily the demonstration still gives us a good idea of how the
+            number of tries increases with each increase in difficulty.
           </p>
           <p>
             By toggling the input type, you can see how a transaction may look
-            when it is hashed. There will also be a bold number to the left of 
+            when it is hashed. There will also be a bold number to the left of
             the transaction data (after hashing) that is the calculated nonce.
           </p>
         </Col>
       </Row>
       <Row className="justify-content-center">
         <Col className="demonstration" lg="7">
-          <button className="toggleButton" onClick={toggleInputType}>
+          <button style={{marginTop: '1em'}}className="toggleButton" onClick={toggleInputType}>
             current input type: {inputType === 0 ? "manual" : "transaction"}
           </button>
-          <p>input:</p>
           {inputType === 0 ? (
             <ManualInput handleChange={handleInputChange} value={inputValue} />
           ) : (
