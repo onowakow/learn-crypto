@@ -28,25 +28,28 @@ const HomePage = () => {
           <p>
             Bitcoin is a digital currency. It can be used like any other
             currency to buy and exchange goods (assuming a vendor accepts it).
-            Bitcoins are tracked on a ledger, called the blockchain, where they
-            are assigned to people's unique ID's.
+            Bitcoin values are tracked on a ledger, called the blockchain, where
+            they are assigned to people's unique IDs.
           </p>
 
           <p>
             Bitcoins, in some sense, do not exist. They have no physical token,
             no precious metal standard, and they don't even have unique
             identification numbers to distinguish one coin from the next.
-            Instead, bitcoins live as <em>balances</em> attributed to one person
-            or another on a ledger (the blockchain). Without being able to show
-            a physical (or digital) object to prove ownership, each bitcoin must
-            be tracked from its inception to prove who owns it.
+            Instead, bitcoins live as <em>amounts of value</em> attributed to
+            one person or another on a ledger (called the blockchain). Without
+            being able to show a physical or digital object to prove ownership
+            of 'a bitcoin', a complete histories of personal balances is
+            recorded to prove who owns what.
           </p>
-
+          <div className="extra" style={{ marginBottom: "1em" }}>
+            Reminder: The blockchain is the single ledger that tracks all bitcoin transactions.
+          </div>
           <p>
-            This ledger, the blockchain, mysteriously lacks any governing
-            organization or other oversight, and there's no central website or
-            server where the blockchain officially lives. Instead, people share
-            copies of the blockchain, always trusting the longest ledger.
+            The blockchain mysteriously lacks any governing organization or
+            other oversight, and there's no central website or server where the
+            blockchain officially lives. Instead, people share copies of the
+            blockchain, always trusting the longest ledger.
           </p>
 
           <p>
@@ -73,12 +76,11 @@ const HomePage = () => {
 
           <p>
             Let's review some components of bitcoin. First, we have{" "}
-            <b>transactions</b>, which are records of bitcoins (typically
-            partial bitcoins) being traded. Transactions are grouped into{" "}
-            <b>blocks</b>. <b>Miners</b> run random numbers through computers to
-            find the ones which satisfy a mathematical lottery, and upon
-            success, chain the new blocks onto the pre-existing{" "}
-            <b>blockchain</b>.
+            <b>transactions</b>, which are records of bitcoin amounts being
+            traded. Transactions are grouped into <b>blocks</b>. <b>Miners</b>{" "}
+            run random numbers through computers to find the ones which satisfy
+            a mathematical lottery, and upon success, chain the new blocks onto
+            the pre-existing <b>blockchain</b>.
           </p>
 
           <p>

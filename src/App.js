@@ -10,6 +10,7 @@ import DifficultHashPage from "./pages/DifficultHashPage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TransactionHashPage from "./pages/TransactionHashPage";
 import ScrollToTop from "./components/ScrollToTop";
+import ConclusionPage from './pages/ConclusionPage'
 
 const App = () => {
   return (
@@ -67,6 +68,10 @@ const App = () => {
 
         <Route exact path='/simplehash'>
           <SimpleHashPage />
+        </Route>
+
+        <Route exact path='/conclusion'>
+          <ConclusionPage />
         </Route>
 
       </Switch>

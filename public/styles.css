@@ -52,6 +52,14 @@ table {
   border-collapse: collapse;
 }
 
+.extra {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: .5em;
+  margin-bottom: 1em;
+}
+
 .demonstration {
   font-family: 'Lato', sans-serif;
   color: var(--secondary-bg-color);
@@ -119,12 +127,14 @@ h2 {
   padding-top: 1em;
 }
 
+
 .spanButton {
   background-color: var(--main-attn-color);
   color: var(--main-bg-color);
   width: 100%;
   border-radius: 2px;
 }
+
 
 .overflow {
   overflow-x: auto;

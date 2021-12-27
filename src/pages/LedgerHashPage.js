@@ -6,6 +6,7 @@ import Ledger from "../components/Ledger";
 import HasherPropInput from "../components/HasherPropInput";
 import ResetButton from "../components/ResetButton";
 import AutoNonceHashButton from "../components/AutoNonceHashButton";
+import NextPage from "../components/NextPage";
 
 const minerID = 238445;
 
@@ -93,22 +94,21 @@ ${transaction.amount}`);
 
     // update transactions array
     setTransactions(
-      indexOfToHash <= 2 ? (
-        transactions
-          .concat(storedTransactions[indexOfToHash + 1])
-          .map((transaction, i) =>
-            i === indexOfToHash
-              ? Object.assign({}, transaction, {
-                  hash: hashObject.hash,
-                  nonce: hashObject.nonce,
-                })
-              : i === indexOfToHash + 1
-              ? Object.assign({}, transaction, { prevHash: hashObject.hash })
-              : transaction
-          ) 
-      ) : indexOfToHash === 3 ? (
-        transactions
-          .map((transaction, i) =>
+      indexOfToHash <= 2
+        ? transactions
+            .concat(storedTransactions[indexOfToHash + 1])
+            .map((transaction, i) =>
+              i === indexOfToHash
+                ? Object.assign({}, transaction, {
+                    hash: hashObject.hash,
+                    nonce: hashObject.nonce,
+                  })
+                : i === indexOfToHash + 1
+                ? Object.assign({}, transaction, { prevHash: hashObject.hash })
+                : transaction
+            )
+        : indexOfToHash === 3
+        ? transactions.map((transaction, i) =>
             i === indexOfToHash
               ? Object.assign({}, transaction, {
                   hash: hashObject.hash,
@@ -116,7 +116,7 @@ ${transaction.amount}`);
                 })
               : transaction
           )
-      ) : null
+        : null
     );
   };
 
@@ -125,13 +125,32 @@ ${transaction.amount}`);
       <Row className="justify-content-center">
         <Col className="interpretation" lg="7">
           <h4>Putting it all together</h4>
-          <p>This final demonstration is a mining simulation. Imagine that the first pictured
-            block is just most recent block in a the long bitcoin blockchain. You will need
-            to send that data to the hasher and run the program to find the special nonce (you can do
-            all of this by clicking the button below the input). As you verify each transaction,
-            another will pop up. Finally, notice that the blocks include a record that you have
-            been rewarded bitcoin for successful mining.
+          <p>
+            Mining is central to making bitcoin legitimate. Because bitcoins
+            lack individual identification, the flow of bitcoin value must be
+            precisely tracked from account to account on the blockchain.
+            Transactions wait to be verified in blocks, where difficult-to-find
+            hashes will eventually link them to the blockchain.
           </p>
+          <p>
+            Below is a quick simulation of the mining process. The block
+            pictured on top is the most recent block in the chain. Each new
+            block will need to be hashed by passing its data to the hasher.
+            Notice how the data is passed as a string containing the previous
+            block's hash and the current transaction data.
+          </p>
+          <p>
+            A new transaction block will pop as you verify the present one.
+            Notice that the blocks include a record that you have been rewarded
+            bitcoin for successful mining. This is the only instance where
+            bitcoins are ever generated. Note: after you have four blocks on
+            the screen, you will be unable to continue the demonstration.
+          </p>
+          <div className="extra">
+            Where this demo falls short: Remember that verifying multiple
+            consecutive blocks in reality would be next to impossible, as this
+            would require outcompeting the world's computer power.
+          </div>
         </Col>
       </Row>
       <Row className="justify-content-center">
@@ -150,11 +169,7 @@ ${transaction.amount}`);
           <ResetButton handleReset={handleReset} />
         </Col>
       </Row>
-      <Row className='justify-content-center' style={{marginTop: '1em'}}>
-        <Col className='interpretation' lg='7'>
-          <h4>Let's recap</h4>
-        </Col>
-      </Row>
+      <NextPage pageName='conclusion' />
     </Container>
   );
 };
