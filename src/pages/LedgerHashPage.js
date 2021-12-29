@@ -7,7 +7,7 @@ import HasherPropInput from "../components/HasherPropInput";
 import ResetButton from "../components/ResetButton";
 import AutoNonceHashButton from "../components/AutoNonceHashButton";
 import NextPage from "../components/NextPage";
-import FormInput from '../components/FormInput'
+import FormInput from "../components/FormInput";
 
 const minerID = 238445;
 
@@ -64,19 +64,23 @@ const storedTransactions = [
   },
 ];
 
+const blankFormData = {
+  prevHash: "",
+  date: "",
+  sender: "",
+  recipient: "",
+  amount: "",
+};
+
 const LedgerHashPage = () => {
   // string to hash. Will be given to hasher component.
   const [stringToHash, setStringToHash] = useState(null);
   // index stores index of data stored in state toHash
   const [indexOfToHash, setIndexOfToHash] = useState(null);
 
-  const [formData, setFormData] = useState({
-    prevHash: '',
-    date: '',
-    sender: '',
-    recipient: '',
-    amount: ''
-  })
+  const [formData, setFormData] = useState(blankFormData);
+
+  const [nonce, setNonce] = useState(null)
 
   const [transactions, setTransactions] = useState(
     storedTransactions.slice(0, 2)
@@ -86,6 +90,7 @@ const LedgerHashPage = () => {
     setTransactions(storedTransactions);
     setIndexOfToHash(null);
     setStringToHash(null);
+    setFormData(blankFormData)
   };
 
   const handleButtonClick = (transaction, i) => {
@@ -95,8 +100,8 @@ const LedgerHashPage = () => {
       date: transaction.date,
       sender: transaction.sender,
       recipient: transaction.recipient,
-      amount: transaction.amount
-    })
+      amount: transaction.amount,
+    });
     setStringToHash(`${transaction.prevHash}
 ${transaction.date}
 ${transaction.sender}
@@ -105,6 +110,8 @@ ${transaction.amount}`);
   };
 
   const handleHashObject = (hashObject) => {
+    // hashObject.nonce contains nonce value.
+    setNonce(hashObject.nonce)
     // Clear hasher input
     setStringToHash(null);
 
@@ -159,8 +166,8 @@ ${transaction.amount}`);
             A new transaction block will pop as you verify the present one.
             Notice that the blocks include a record that you have been rewarded
             bitcoin for successful mining. This is the only instance where
-            bitcoins are ever generated. Note: after you have four blocks on
-            the screen, you will be unable to continue the demonstration.
+            bitcoins are ever generated. Note: after you have four blocks on the
+            screen, you will be unable to continue the demonstration.
           </p>
           <div className="extra">
             Where this demo falls short: Remember that verifying multiple
@@ -175,11 +182,10 @@ ${transaction.amount}`);
             handleButtonClick={handleButtonClick}
             transactions={transactions}
           />
-          Your bitcoin ID: {minerID}
           {/* trying a new input form 
           <HasherPropInput data={stringToHash} />
           */}
-          <FormInput data={formData} />
+          <FormInput nonce={nonce} data={formData} minerID={minerID} />
           <AutoNonceHashButton
             difficulty={"2"}
             data={stringToHash}
@@ -188,7 +194,7 @@ ${transaction.amount}`);
           <ResetButton handleReset={handleReset} />
         </Col>
       </Row>
-      <NextPage pageName='conclusion' />
+      <NextPage pageName="conclusion" />
     </Container>
   );
 };
