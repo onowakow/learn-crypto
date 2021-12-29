@@ -220,18 +220,7 @@ h2 {
   background-color: var(--tertiary-darker-bg-color);
 }
 
-/* BLOCKCHAIN PAGE */
-
-.protoTransaction {
-  text-align: center;
-  width: 100px;
-  border-left: 1px;
-}
 /*
-#protoScheme {
-  border: 3px solid black
-}*/
-
 .protoData {
   color: white;
   display: flex;
@@ -240,12 +229,8 @@ h2 {
   background-color: var(--main-attn-color);
   height: 70px;
 }
+*/
 
-#demoBlockchain {
-  display: flex;
-}
-
-/* for difficult hash page */
 #manualNonce {
   display: flex;
   justify-content: space-around;
@@ -310,4 +295,14 @@ h2 {
 
 .toggleButton:hover {
   background-color: var(--tertiary-darker-bg-color);
+}
+
+.inputForm {
+  border: 2px solid black;
+  background-color: white;
+  padding: 1em;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+
 }

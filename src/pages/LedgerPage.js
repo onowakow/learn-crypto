@@ -55,21 +55,23 @@ const transactions = [
 ];
 
 const LedgerPage = () => {
-  const [isStrike, setIsStrike] = useState(0);
-
-  const handleStrikeClick = () => {
-    setIsStrike(1);
-  };
-
   return (
     <Container className="page">
       <Row className="justify-content-center">
         <Col className="interpretation" lg="7">
           <h3>The blockchain</h3>
           <p>
-            Pictured below is how we will imagine the blockchain. Take a quick
-            glance as it as you scroll down, and we will explore the individual
-            parts in greater detail below.
+            All bitcoin transactions since bitcoin's creation have been recorded
+            on a singular ledger called the blockchain. A block is a list of
+            transactions that is chained to the previous block through
+            cryptography.
+          </p>
+          <p>
+            Pictured below is how we will imagine the blockchain. Each block
+            should be pictured with several hundred transactions, but I included
+            just one per block to make the chain easier to deal with. Take a
+            quick glance as it as you scroll down, and we will explore the
+            individual parts in greater detail below.
           </p>
           <p>
             (Note: older transactions are on top and newer transactions are
@@ -86,11 +88,16 @@ const LedgerPage = () => {
         <Col className="interpretation" lg="7">
           <p>Let's explore the individual components of a block.</p>
           <p>
+            Blocks are chained by cryptography to make the chain extremely
+            difficult to defraud. Remember that bitcoin lacks any organized
+            security. Instead, bitcoin can count on math and statistics to 
+            make fraud nearly impossible.
+          </p>
+          <p>
             The first thing to notice about these blocks are their long
-            identifying codes. These are known as hashes, and they are what
-            miners seek to find. Notice how there is a main hash as well as a
-            recorded 'previous hash.' This is critical to how the blocks are
-            linked together.
+            identifying codes. These are known as hashes, and they are a
+            product of cryptography. Hashes are the chain links in 
+            blockchain. 
           </p>
           <div className="hash" style={{ marginBottom: "1em" }}>
             0000240779e10651b8bab9e68e458a45c40c4a21c55fe6cea8c4109d2857e213
@@ -99,7 +106,7 @@ const LedgerPage = () => {
             A hash like the one pictured above is generated from a{" "}
             <em>cryptographic hash function</em> (hence <em>crypto</em>
             currency). Hash functions, in a general sense, map data by a common
-            system. In order to be a proper hashing function, an input must
+            system. For instance, hash In order to be a proper hashing function, an input must
             always map to a singular output (although the converse does not need
             to be true). We will continue looking into hashing on the next page.
           </p>

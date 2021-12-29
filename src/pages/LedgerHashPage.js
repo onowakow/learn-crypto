@@ -7,6 +7,7 @@ import HasherPropInput from "../components/HasherPropInput";
 import ResetButton from "../components/ResetButton";
 import AutoNonceHashButton from "../components/AutoNonceHashButton";
 import NextPage from "../components/NextPage";
+import FormInput from '../components/FormInput'
 
 const minerID = 238445;
 
@@ -69,6 +70,14 @@ const LedgerHashPage = () => {
   // index stores index of data stored in state toHash
   const [indexOfToHash, setIndexOfToHash] = useState(null);
 
+  const [formData, setFormData] = useState({
+    prevHash: '',
+    date: '',
+    sender: '',
+    recipient: '',
+    amount: ''
+  })
+
   const [transactions, setTransactions] = useState(
     storedTransactions.slice(0, 2)
   );
@@ -81,6 +90,13 @@ const LedgerHashPage = () => {
 
   const handleButtonClick = (transaction, i) => {
     setIndexOfToHash(i);
+    setFormData({
+      prevHash: transaction.prevHash,
+      date: transaction.date,
+      sender: transaction.sender,
+      recipient: transaction.recipient,
+      amount: transaction.amount
+    })
     setStringToHash(`${transaction.prevHash}
 ${transaction.date}
 ${transaction.sender}
@@ -160,7 +176,10 @@ ${transaction.amount}`);
             transactions={transactions}
           />
           Your bitcoin ID: {minerID}
+          {/* trying a new input form 
           <HasherPropInput data={stringToHash} />
+          */}
+          <FormInput data={formData} />
           <AutoNonceHashButton
             difficulty={"2"}
             data={stringToHash}
